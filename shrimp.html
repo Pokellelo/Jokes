@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <style>
+      body{
+        text-align: center;
+      }
+    </style>
+    <!-- Simple pop-up dialog box, containing a form -->
+    <dialog id="favDialog">
+        <form method="dialog">
+            <section>
+                <img
+                    src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/99f56b87-b792-4bdb-aa39-afad37493ec4/dgcu32s-e9421a0a-9a20-435d-b5b8-030e4810077b.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk5ZjU2Yjg3LWI3OTItNGJkYi1hYTM5LWFmYWQzNzQ5M2VjNFwvZGdjdTMycy1lOTQyMWEwYS05YTIwLTQzNWQtYjViOC0wMzBlNDgxMDA3N2IuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.U2i3jGpFjzYCn97AKB4AEtM1W4cyMazEK6XhxxyifQ4">
+                <h3>
+                    You a shrimp!!!!!!
+                </h3>
+            </section>
+                <button id="cancel" type="reset" style="font-size: 50px; width:100%;">A</button>
+        </form>
+    </dialog>
+
+    <menu style="font-size: 50px;">
+        <h3>
+            ¿ Are you a shrimp ?
+        </h3>
+        <button id="updateDetails" style="font-size: 50px;">Yes</button>
+        <button id="updateDetails2" style="font-size: 50px;">Yes</button>
+    </menu>
+
+    <script>
+        (function () {
+            var updateButton = document.getElementById("updateDetails");
+            var updateButton2 = document.getElementById("updateDetails2");
+
+            var cancelButton = document.getElementById("cancel");
+            var favDialog = document.getElementById("favDialog");
+
+            // Update button opens a modal dialog
+            updateButton.addEventListener("click", function () {
+                favDialog.showModal();
+            });
+
+            updateButton2.addEventListener("click", function () {
+                favDialog.showModal();
+            });
+
+            // Form cancel button closes the dialog box
+            cancelButton.addEventListener("click", function () {
+                favDialog.close();
+            });
+        })();
+    </script>
+
+
+
+
+
+
+
+    <script type="javascript">
+
+
+
+</script>
+</body>
+
+</html>
