@@ -1,15 +1,17 @@
 let frecuency = 500
 let currency =  0
 let incrementCurrency = 1
+let interval = setInterval(spawn, frecuency);
 
 function upgrade(element){
     if(currency - 10 < 0) return
 
-
     increment = parseFloat(element.children[0].innerText)
     incrementCurrency += increment
     document.getElementById("bag").children[1].children[0].innerText = incrementCurrency
-    incrementCurrency
+
+    //frecuency-= 100
+    //resetInverval()
 
     currency -= 10
 
@@ -23,13 +25,14 @@ function upgrade(element){
 }
 
 
+function resetInverval(){
+  clearInterval(interval)
+  interval = setInterval(spawn, frecuency);
+}
 
-
-const interval = setInterval(function() {
-    spawn()
-  }, frecuency);
 
 function spawn(){
+
     currency += incrementCurrency
     document.getElementById("bag").children[0].children[0].innerText = currency
 
@@ -43,9 +46,28 @@ function spawn(){
 
 
 
+ let menu = [
+  {id: 1, label:'Currency', increment: 1, cost: 10},
+  {id: 1, label:'Velocity', increment: 1, cost: 100}
+ ]
 
 
+ 
+const createOptions = () => {
+  
+  
+  menu.forEach((element, index) => {
+    let li = document.createElement("li")
+    li.setAttribute("onclick", "upgrade(this)")
+    li.setAttribute("id", index)
+    li.innerText = element.label
 
+    document.getElementById("menu-body").children[0].appendChild(li)
+
+  });
+  
+}
+createOptions()
 
 
 
