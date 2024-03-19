@@ -2,6 +2,13 @@ let frecuency = 500
 let currency =  0
 let incrementCurrency = 1
 let interval = setInterval(spawn, frecuency);
+let costMax = 0, costMin = 10000000;
+let menu = [
+  {id: 1, label:'Currency', increment: 1, cost: 10},
+  {id: 1, label:'Velocity', increment: 1, cost: 100}
+]
+
+const costHashMap = new Map(); //To check cost, so we don't have to foreach the menus everytime
 
 function upgrade(element){
     if(currency - 10 < 0) return
@@ -10,11 +17,11 @@ function upgrade(element){
     incrementCurrency += increment
     document.getElementById("bag").children[1].children[0].innerText = incrementCurrency
 
-    //frecuency-= 100
     //resetInverval()
 
     currency -= 10
 
+    
     switch (element) {
         case 1:
         break;
@@ -25,7 +32,8 @@ function upgrade(element){
 }
 
 
-function resetInverval(){
+function reduceInverval(reduce){
+  frecuency-= 100
   clearInterval(interval)
   interval = setInterval(spawn, frecuency);
 }
@@ -41,15 +49,16 @@ function spawn(){
     document.getElementById("canva").appendChild(document.createElement("span"))
 
   //}
+  if(currency >= costMin){
+    console.log("assd")
+  }
+  
 }
 
 
 
 
- let menu = [
-  {id: 1, label:'Currency', increment: 1, cost: 10},
-  {id: 1, label:'Velocity', increment: 1, cost: 100}
- ]
+
 
 
  
@@ -57,20 +66,37 @@ const createOptions = () => {
   
   
   menu.forEach((element, index) => {
-    let li = document.createElement("li")
-    li.setAttribute("onclick", "upgrade(this)")
-    li.setAttribute("id", index)
-    li.innerText = element.label
 
-    document.getElementById("menu-body").children[0].appendChild(li)
+    let val = costHashMap.get(element.cost)
 
+    if(!val){
+      costHashMap.set(element.cost, [index]);
+    }else{
+      val.push(index)
+      costHashMap.set(element.cost, val);
+    }
+    
+
+
+    let bt = document.createElement("button")
+    bt.setAttribute("onclick", "upgrade(this)")
+    bt.setAttribute("class", "menu-btn")
+    bt.setAttribute("id", index)
+    bt.innerText = element.label
+
+    document.getElementById("menu-body").children[0].appendChild(bt)
+    setMaxandMin()
   });
-  
+ 
 }
 createOptions()
 
 
-
+function setMaxandMin(){
+  const a = costHashMap.keys().toArray()
+  costMin = Math.min(...a)
+  costMax = Math.max(...a)
+} 
 
 
 

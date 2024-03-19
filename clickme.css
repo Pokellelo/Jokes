@@ -17,13 +17,16 @@ body{
     padding: 10px;
 }
   
-  #menu div:first-child {
-    background-color: #2196F3;
-    color: #fff;
-    font-size: 18px;
-    padding: 10px;
-  }
-
+#menu-header {
+  background-color: #2196F3;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px;
+}
+.menu-btn{
+  display: block;
+  min-width: 100px;
+}
 #canva{
     margin-left: 200px;
 }
