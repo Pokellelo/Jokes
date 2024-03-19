@@ -1,0 +1,39 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+#menu {
+    position: absolute;
+    z-index: 9;
+    background-color: #857878;
+    border: 1px solid #d3d3d3;
+    text-align: center;
+    cursor:grabbing;
+  }
+  
+  #menu div:first-child {
+    background-color: #2196F3;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+  }
+
+#canva{
+    margin-left: 180px;
+}
+
+#bag{
+    background-color: #857878;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+#canva span{
+    background-color: rgb(42, 111, 240);
+    width:10px;
+    height: 10px;
+    display: inline-block;
+}
+
+  
