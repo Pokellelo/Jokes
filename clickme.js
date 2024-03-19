@@ -1,15 +1,15 @@
-let frecuency = 1000
+let frecuency = 500
 let currency =  0
 let incrementCurrency = 1
 
 function upgrade(element){
     if(currency - 10 < 0) return
 
-element.children[0].innerText
 
     increment = parseFloat(element.children[0].innerText)
-
     incrementCurrency += increment
+    document.getElementById("bag").children[1].children[0].innerText = incrementCurrency
+    incrementCurrency
 
     currency -= 10
 
@@ -34,8 +34,10 @@ function spawn(){
     document.getElementById("bag").children[0].children[0].innerText = currency
 
 
-
+  //for (let index = 0; index < incrementCurrency; index++) {
     document.getElementById("canva").appendChild(document.createElement("span"))
+
+  //}
 }
 
 

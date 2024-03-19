@@ -7,10 +7,15 @@ body{
     position: absolute;
     z-index: 9;
     background-color: #857878;
-    border: 1px solid #d3d3d3;
+    color: #fff;
     text-align: center;
     cursor:grabbing;
+    top:60px;
   }
+
+#menu-body{
+    padding: 10px;
+}
   
   #menu div:first-child {
     background-color: #2196F3;
@@ -20,7 +25,7 @@ body{
   }
 
 #canva{
-    margin-left: 180px;
+    margin-left: 200px;
 }
 
 #bag{
