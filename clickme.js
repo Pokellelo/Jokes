@@ -4,8 +4,11 @@ let incrementCurrency = 1
 let interval = setInterval(spawn, frecuency);
 let costMax = 0, costMin = 10000000;
 let menu = [
-  {id: 1, label:'Currency', increment: 1, cost: 10},
-  {id: 1, label:'Velocity', increment: 1, cost: 100}
+  {id: 1, label:'Currency 1', increment: 1, cost: 10, costIncrement: 1.5, upgradedTimes:0, upgradeMax: 50},
+  {id: 2, label:'Currency 2', increment: 1, cost: 5, costIncrement: 1.5, upgradedTimes:0, upgradeMax: 50},
+  {id: 3, label:'Currency 3', increment: 1, cost: 30, costIncrement: 1.5, upgradedTimes:0, upgradeMax: 50},
+  {id: 4, label:'Currency 4', increment: 1, cost: 10, costIncrement: 1.5, upgradedTimes:0, upgradeMax: 50},
+  {id: 5, label:'Velocity', increment: 1, cost: 20, costIncrement: 2, upgradedTimes:0, upgradeMax: 50}
 ]
 
 const costHashMap = new Map(); //To check cost, so we don't have to foreach the menus everytime
@@ -50,7 +53,19 @@ function spawn(){
 
   //}
   if(currency >= costMin){
-    console.log("assd")
+    
+    let indexs = costHashMap.get(costMin)
+
+
+    indexs.forEach(i => {
+      
+      document.getElementById("option-" + i).removeAttribute("disabled")
+
+    });
+
+    costHashMap.delete(costMin)
+    setMaxandMin()
+
   }
   
 }
@@ -81,7 +96,11 @@ const createOptions = () => {
     let bt = document.createElement("button")
     bt.setAttribute("onclick", "upgrade(this)")
     bt.setAttribute("class", "menu-btn")
-    bt.setAttribute("id", index)
+    bt.setAttribute("id", "option-" +index)
+    bt.setAttribute("menuindex", index)
+
+    bt.setAttribute("disabled", "disabled")
+
     bt.innerText = element.label
 
     document.getElementById("menu-body").children[0].appendChild(bt)
