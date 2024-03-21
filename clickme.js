@@ -139,20 +139,40 @@ const setCost = (cost, index, all = false) => {
         .setAttribute("disabled", "disabled");
     }
 
-    setMaxandMin();
+    let d = document.getElementById("menu-div-" + index)
+    d.children[1].innerText = menu[index].upgradedTimes
+
+    d.children[3].innerText = menu[index].cost.toFixed(2)
   });
+
+  setMaxandMin();
 };
 
 const createOptions = () => {
   menu.forEach((element, index) => {
+    let d = document.createElement("div");
+    d.setAttribute("id", "menu-div-" + index);
+    d.setAttribute("class", "menu-div");
+
+
+    let s = document.createElement("span");
+    s.innerText = " | ";
+
+    let s_cost = document.createElement("span");
+
     let bt = document.createElement("button");
     bt.setAttribute("onclick", "upgrade(this)");
     bt.setAttribute("class", "menu-btn");
     bt.setAttribute("id", "option-" + index);
     bt.setAttribute("menuindex", index);
-    bt.innerText = element.label;
+    bt.innerText = element.label + " + ";
 
-    document.getElementById("menu-body").children[0].appendChild(bt);
+    d.appendChild(bt);
+    d.appendChild(document.createElement("span"));
+    d.appendChild(s);
+    d.appendChild(document.createElement("span"));
+
+    document.getElementById("menu-body").children[0].appendChild(d);
 
     setCost(element.cost, index);
   });

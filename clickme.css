@@ -24,9 +24,16 @@ body{
   padding: 10px;
 }
 .menu-btn{
-  display: block;
+  display: inline-block;
   min-width: 100px;
 }
+
+.menu-div span{
+  width: 40px;
+  display: inline-block;
+}
+
+
 #canva{
     margin-left: 200px;
 }
