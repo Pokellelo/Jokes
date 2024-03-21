@@ -9,19 +9,18 @@
             margin: 0;
         }
 
-        .liga-b{
+        .liga-b {
             display: block;
             padding: 10px;
             margin: 10px;
             min-width: 100px;
-            color:white;
+            color: white;
             background-color: rgb(42, 111, 240);
             text-decoration: none;
         }
 
-        .liga-b:hover{
-            filter:brightness(80%)
-
+        .liga-b:hover {
+            filter: brightness(80%)
         }
     </style>
 </head>
@@ -39,7 +38,7 @@
 
     <script type="text/javascript">
 
-
+        const host = location.host == "" ? "" : location.href.slice(0, -9)
         let d = document.getElementById("main")
 
         const ar = [{ name: "shrimp", ref: "shrimp.html" }, { name: "Clickme", ref: "clickme.html" }]
@@ -47,7 +46,7 @@
         ar.forEach(e => {
             let b = document.createElement("a")
             b.setAttribute("class", "liga-b")
-            b.setAttribute("href", e.ref)
+            b.setAttribute("href", host + e.ref)
             b.innerText = e.name
 
 
