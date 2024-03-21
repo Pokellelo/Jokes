@@ -38,10 +38,17 @@ body{
 }
 
 #canva span{
-    background-color: rgb(42, 111, 240);
     width:10px;
     height: 10px;
     display: inline-block;
+}
+
+.c-blue{
+  background-color: rgb(42, 111, 240);
+}
+
+.c-orange{
+  background-color: rgb(196, 83, 49);
 }
 
   

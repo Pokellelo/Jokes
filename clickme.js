@@ -1,3 +1,5 @@
+const colorClasses = ["c-blue", "c-blue", "c-blue", "c-orange"]; //75% - 30%
+
 let frecuency = 500;
 let currency = 0;
 let incrementCurrency = 1;
@@ -7,7 +9,7 @@ let costMax = 0,
 let menu = [
   {
     id: 1,
-    label: "Currency 1",
+    label: "Currency",
     increment: 1,
     cost: 10,
     costIncrement: 1.5,
@@ -16,7 +18,7 @@ let menu = [
   },
   {
     id: 2,
-    label: "Currency 2",
+    label: "Velocity",
     increment: 1,
     cost: 5,
     costIncrement: 1.5,
@@ -25,7 +27,7 @@ let menu = [
   },
   {
     id: 3,
-    label: "Currency 3",
+    label: "Test",
     increment: 1,
     cost: 30,
     costIncrement: 1.5,
@@ -34,7 +36,7 @@ let menu = [
   },
   {
     id: 4,
-    label: "Currency 4",
+    label: "Test",
     increment: 1,
     cost: 10,
     costIncrement: 1.5,
@@ -43,7 +45,7 @@ let menu = [
   },
   {
     id: 5,
-    label: "Velocity",
+    label: "Test",
     increment: 1,
     cost: 20,
     costIncrement: 2,
@@ -66,29 +68,41 @@ function upgrade(element) {
 
   //resetInverval()
 
-  switch(index) {
+  switch (index) {
     case 0:
-      incrementCurrency++
+      incrementCurrency++;
       break;
+    case 1:
+      reduceInverval();
+      break;
+
     default:
       break;
   }
-
-
 }
 
-function reduceInverval(reduce) {
-  frecuency -= 100;
+function reduceInverval(reduce = 10) {
+  frecuency -= reduce;
   clearInterval(interval);
   interval = setInterval(spawn, frecuency);
 }
+
+const createBlock = (color = null) => {
+  let b = document.createElement("span");
+
+  if (!color)
+    color = colorClasses[Math.floor(Math.random() * colorClasses.length)];
+
+  b.setAttribute("class", color);
+  return b;
+};
 
 function spawn() {
   currency += incrementCurrency;
   document.getElementById("bag").children[0].children[0].innerText = currency;
 
   //for (let index = 0; index < incrementCurrency; index++) {
-  document.getElementById("canva").appendChild(document.createElement("span"));
+  document.getElementById("canva").appendChild(createBlock());
 
   if (currency >= costMin) enableMenuOptions();
   //}
