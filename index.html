@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            text-align: center;
+            padding: 20%;
+            margin: 0;
+        }
+
+        .liga-b{
+            display: block;
+            padding: 10px;
+            margin: 10px;
+            min-width: 100px;
+            color:white;
+            background-color: rgb(42, 111, 240);
+            text-decoration: none;
+        }
+
+        .liga-b:hover{
+            filter:brightness(80%)
+
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div id="main">
+
+    </div>
+
+
+
+
+
+    <script type="text/javascript">
+
+
+        let d = document.getElementById("main")
+
+        const ar = [{ name: "shrimp", ref: "shrimp.html" }, { name: "Clickme", ref: "clickme.html" }]
+
+        ar.forEach(e => {
+            let b = document.createElement("a")
+            b.setAttribute("class", "liga-b")
+            b.setAttribute("href", e.ref)
+            b.innerText = e.name
+
+
+            d.appendChild(b);
+        });
+
+
+
+    </script>
+</body>
+
+
+</html>
