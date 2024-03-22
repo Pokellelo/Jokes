@@ -13,6 +13,26 @@ body{
     top:60px;
   }
 
+#manual-click{
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  background-color: #1d88df;
+  color:white;
+  border: none;
+  font-size:30px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+#manual-click:active {
+  transform: rotate(0.5turn);
+}
+
+.filter-brigh:hover{
+  filter:brightness(80%);
+}
+
 #menu-body{
     padding: 10px;
 }
@@ -45,7 +65,7 @@ body{
 }
 
 #canva span{
-    width:10px;
+    min-width:10px;
     height: 10px;
     display: inline-block;
 }
@@ -58,4 +78,3 @@ body{
   background-color: rgb(196, 83, 49);
 }
 
-  

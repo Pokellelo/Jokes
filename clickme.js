@@ -14,7 +14,7 @@ let menu = [
     cost: 10,
     costIncrement: 1.5,
     upgradedTimes: 0,
-    upgradeMax: 50,
+    upgradeMax: 30,
   },
   {
     id: 2,
@@ -101,17 +101,19 @@ function spawn() {
   currency += incrementCurrency;
   document.getElementById("bag").children[0].children[0].innerText = currency;
 
-  //for (let index = 0; index < incrementCurrency; index++) {
-  document.getElementById("canva").appendChild(createBlock());
+  for (let index = 0; index < incrementCurrency; index++) {
+    document.getElementById("canva").appendChild(createBlock());
 
-  if (currency >= costMin) enableMenuOptions();
-  //}
+    if (currency >= costMin) enableMenuOptions();
+  }
 }
 
 const enableMenuOptions = () => {
   let indexs = costHashMap.get(costMin);
   indexs.forEach((i) => {
-    document.getElementById("option-" + i).removeAttribute("disabled");
+    if(menu[i].upgradedTimes < menu[i].upgradeMax){
+      document.getElementById("option-" + i).removeAttribute("disabled");
+    }
   });
 
   costHashMap.delete(costMin);
@@ -139,10 +141,10 @@ const setCost = (cost, index, all = false) => {
         .setAttribute("disabled", "disabled");
     }
 
-    let d = document.getElementById("menu-div-" + index)
-    d.children[1].innerText = menu[index].upgradedTimes
+    let d = document.getElementById("menu-div-" + index);
+    d.children[1].innerText = menu[index].upgradedTimes;
 
-    d.children[3].innerText = menu[index].cost.toFixed(2)
+    d.children[3].innerText = menu[index].cost.toFixed(2);
   });
 
   setMaxandMin();
@@ -153,7 +155,6 @@ const createOptions = () => {
     let d = document.createElement("div");
     d.setAttribute("id", "menu-div-" + index);
     d.setAttribute("class", "menu-div");
-
 
     let s = document.createElement("span");
     s.innerText = " | ";
