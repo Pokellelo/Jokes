@@ -3,6 +3,7 @@ const colorClasses = ["c-blue", "c-blue", "c-blue", "c-orange"]; //75% - 30%
 let frecuency = 500;
 let currency = 0;
 let incrementCurrency = 1;
+let randomPickable = 0.01;
 let interval = setInterval(spawn, frecuency);
 let costMax = 0,
   costMin = 10000000;
@@ -27,7 +28,7 @@ let menu = [
   },
   {
     id: 3,
-    label: "Test",
+    label: "Pickable",
     increment: 1,
     cost: 30,
     costIncrement: 1.5,
@@ -76,10 +77,23 @@ function upgrade(element) {
       reduceInverval();
       break;
 
+    case 2:
+      upgradePickeable(index);
+      break;
+
     default:
       break;
   }
 }
+
+function createPickleable() {
+  
+}
+
+function upgradePickeable() {
+  
+}
+
 
 function reduceInverval(reduce = 10) {
   frecuency -= reduce;
@@ -99,7 +113,8 @@ const createBlock = (color = null) => {
 
 function spawn() {
   currency += incrementCurrency;
-  document.getElementById("bag").children[0].children[0].innerText = currency.toFixed(2);
+  document.getElementById("bag").children[0].children[0].innerText =
+    currency.toFixed(2);
 
   for (let index = 0; index < incrementCurrency; index++) {
     document.getElementById("canva").appendChild(createBlock());
@@ -111,7 +126,7 @@ function spawn() {
 const enableMenuOptions = () => {
   let indexs = costHashMap.get(costMin);
   indexs.forEach((i) => {
-    if(menu[i].upgradedTimes < menu[i].upgradeMax){
+    if (menu[i].upgradedTimes < menu[i].upgradeMax) {
       document.getElementById("option-" + i).removeAttribute("disabled");
     }
   });
@@ -203,7 +218,6 @@ function dragElement(elmnt) {
   }
 
   function dragMouseDown(e) {
-    e = e || window.event;
     e.preventDefault();
     // get the mouse cursor position at startup:
     pos3 = e.clientX;
@@ -214,7 +228,6 @@ function dragElement(elmnt) {
   }
 
   function elementDrag(e) {
-    e = e || window.event;
     e.preventDefault();
     // calculate the new cursor position:
     pos1 = pos3 - e.clientX;
