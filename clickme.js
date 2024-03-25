@@ -99,7 +99,7 @@ const createBlock = (color = null) => {
 
 function spawn() {
   currency += incrementCurrency;
-  document.getElementById("bag").children[0].children[0].innerText = currency;
+  document.getElementById("bag").children[0].children[0].innerText = currency.toFixed(2);
 
   for (let index = 0; index < incrementCurrency; index++) {
     document.getElementById("canva").appendChild(createBlock());
