@@ -3,7 +3,7 @@ const colorClasses = ["c-blue", "c-blue", "c-blue", "c-orange"]; //75% - 30%
 let frecuency = 500;
 let currency = 0;
 let incrementCurrency = 1;
-let randomPickable = 0.01;
+let maxRandomPickable = 100;
 let interval = setInterval(spawn, frecuency);
 let costMax = 0,
   costMin = 10000000;
@@ -87,13 +87,10 @@ function upgrade(element) {
 }
 
 function createPickleable() {
-  
+  console.log("create");
 }
 
-function upgradePickeable() {
-  
-}
-
+function upgradePickeable(index) {}
 
 function reduceInverval(reduce = 10) {
   frecuency -= reduce;
@@ -121,6 +118,8 @@ function spawn() {
 
     if (currency >= costMin) enableMenuOptions();
   }
+
+  if (Math.floor(Math.random() * maxRandomPickable) == 1) createPickleable();
 }
 
 const enableMenuOptions = () => {
