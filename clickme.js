@@ -3,10 +3,12 @@ const colorClasses = ["c-blue", "c-blue", "c-blue", "c-orange"]; //75% - 30%
 let frecuency = 500;
 let currency = 0;
 let incrementCurrency = 1;
-let maxRandomPickable = 100;
+let randomPickableMax = 100;
+let randomPickableCurrency = 200;
+
 let interval = setInterval(spawn, frecuency);
-let costMax = 0,
-  costMin = 10000000;
+let costMax = 0;
+let costMin = 10000000;
 let menu = [
   {
     id: 1,
@@ -37,7 +39,7 @@ let menu = [
   },
   {
     id: 4,
-    label: "Test",
+    label: "Pickable value",
     increment: 1,
     cost: 10,
     costIncrement: 1.5,
@@ -78,7 +80,11 @@ function upgrade(element) {
       break;
 
     case 2:
-      upgradePickeable(index);
+      randomPickableMax--;
+      break;
+
+    case 3:
+      randomPickableCurrency += randomPickableCurrency * 0.5;
       break;
 
     default:
@@ -87,10 +93,20 @@ function upgrade(element) {
 }
 
 function createPickleable() {
-  console.log("create");
+  //ADD some animations and ways to encourage the player to click it
+  let s = document.createElement("span");
+  s.setAttribute("class", "pickable c-green");
+  s.setAttribute("onclick", "pickPickeable(this)");
+
+  let body = document.body;
+
+  body.appendChild(s);
 }
 
-function upgradePickeable(index) {}
+function pickPickeable(e) {
+  e.remove();
+  currency += randomPickableCurrency;
+}
 
 function reduceInverval(reduce = 10) {
   frecuency -= reduce;
@@ -119,7 +135,7 @@ function spawn() {
     if (currency >= costMin) enableMenuOptions();
   }
 
-  if (Math.floor(Math.random() * maxRandomPickable) == 1) createPickleable();
+  if (Math.floor(Math.random() * randomPickableMax) == 1) createPickleable();
 }
 
 const enableMenuOptions = () => {
