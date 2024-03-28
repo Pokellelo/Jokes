@@ -60,6 +60,7 @@ let menu = [
 const costHashMap = new Map(); //To check cost, so we don't have to foreach the menus everytime
 
 function upgrade(element) {
+  setCookie("currency", currency)
   let index = parseInt(element.getAttribute("menuindex"));
 
   currency -= menu[index].cost;
@@ -220,6 +221,7 @@ function setMaxandMin() {
 dragElement(document.getElementById("menu"));
 
 function dragElement(elmnt) {
+  getCookie("currency")
   var pos1 = 0,
     pos2 = 0,
     pos3 = 0,
@@ -260,3 +262,25 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   }
 }
+
+/* Cookies */
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+const setCookie = (name, value) => {
+  document.cookie = name + "=" + value + ";" + "path=/";
+};
