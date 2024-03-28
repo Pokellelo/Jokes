@@ -3,7 +3,7 @@ const colorClasses = ["c-blue", "c-blue", "c-blue", "c-orange"]; //75% - 30%
 let frecuency = 500;
 let currency = 0;
 let incrementCurrency = 1;
-let randomPickableMax = 100;
+let randomPickableMax = 2;
 let randomPickableCurrency = 200;
 
 let interval = setInterval(spawn, frecuency);
@@ -95,10 +95,20 @@ function upgrade(element) {
 
 function createPickleable() {
   //ADD some animations and ways to encourage the player to click it
-  let s = document.createElement("span");
-  s.setAttribute("class", "pickable c-green");
-  s.setAttribute("onclick", "pickPickeable(this)");
+  
+  
+  const r_top = Math.floor(Math.random() * 500);
+  const r_left = Math.floor(Math.random() * 500);
 
+  
+  let s = document.createElement("span");
+  s.setAttribute("class", "pickable");
+  s.setAttribute("onclick", "pickPickeable(this)");
+  s.setAttribute("style", "(this)");
+  s.style.top = r_top
+  s.style.left = r_left
+
+  s.innerText = "⭐";
   let body = document.body;
 
   body.appendChild(s);

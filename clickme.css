@@ -73,7 +73,6 @@ body{
 
 .pickable{
   position:absolute;
-  top: 50%;
   width:10px;
   height: 10px;
   display: inline-block;
