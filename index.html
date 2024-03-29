@@ -5,15 +5,22 @@
     <style>
         body {
             text-align: center;
-            padding: 20%;
+            padding: 0;
             margin: 0;
+            background-color: #d2d6de;
         }
 
+        #main {
+            display: grid;
+            grid-auto-rows: 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+
         .liga-b {
+            padding: 2rem 1rem;
             display: block;
-            padding: 10px;
             margin: 10px;
-            min-width: 100px;
             color: white;
             background-color: rgb(42, 111, 240);
             text-decoration: none;
@@ -27,21 +34,15 @@
 
 <body>
 
-
     <div id="main">
 
     </div>
 
-
-
-
-
     <script type="text/javascript">
-
         const host = location.host == "" ? "" : location.href.slice(0, -10)
         let d = document.getElementById("main")
 
-        const ar = [{ name: "shrimp", ref: "shrimp.html" }, { name: "Clickme", ref: "clickme.html" }]
+        const ar = [{ name: "Shrimp", ref: "shrimp.html" }, { name: "Just a clicker", ref: "clickme.html" }]
 
         ar.forEach(e => {
             let b = document.createElement("a")
@@ -52,9 +53,6 @@
 
             d.appendChild(b);
         });
-
-
-
     </script>
 </body>
 
