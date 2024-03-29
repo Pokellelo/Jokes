@@ -73,9 +73,14 @@ body{
 
 .pickable{
   position:absolute;
-  width:10px;
-  height: 10px;
-  display: inline-block;
+  display: block;
+  font-size: 25px;
+  cursor:pointer
+}
+
+.pickable:hover{
+  font-size: 30px;
+  filter: brightness(80%);
 }
 /*Utils*/
 
