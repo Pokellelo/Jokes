@@ -29,7 +29,7 @@ body{
   transform: rotate(0.5turn);
 }
 
-.filter-brigh:hover{
+.filter-bright:hover{
   filter:brightness(80%);
 }
 
@@ -82,6 +82,15 @@ body{
   font-size: 30px;
   filter: brightness(80%);
 }
+
+#btn-reset{
+  position: absolute;
+  right: 20px;
+  border:none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
 /*Utils*/
 
 .text-right{
@@ -91,16 +100,19 @@ body{
 .margin0{
   margin:0;
 }
-.c-blue{
+.bg-c-blue{
   background-color: rgb(42, 111, 240);
 }
 
-.c-orange{
+.bg-c-orange{
   background-color: rgb(196, 83, 49);
 }
 
-.c-green{
+.bg-c-green{
   background-color: rgb(49, 196, 81);
 }
 
+.c-white{
+  color:white;
+}
 /**/
