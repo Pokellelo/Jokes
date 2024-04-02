@@ -1,7 +1,5 @@
 const colorClasses = ["bg-c-blue", "bg-c-blue", "bg-c-blue", "bg-c-orange"]; //75% - 30%
-
 const local = getLocalStorage("vars");
-console.table(local);
 let vars = local
   ? local
   : {
