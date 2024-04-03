@@ -1,4 +1,6 @@
 const colorClasses = ["bg-c-blue", "bg-c-blue", "bg-c-blue", "bg-c-orange"]; //75% - 30%
+const emojis = ["🐻", "🐸", "🦖", "🐙"]; //25%
+
 const local = getLocalStorage("vars");
 let vars = local
   ? local
@@ -127,13 +129,18 @@ function reduceInverval(reduce = 10) {
   vars.interval = setInterval(spawn, vars.frecuency);
 }
 
-const createBlock = (color = null) => {
+const createBlock = (cclass = null, text = null) => {
   let b = document.createElement("span");
+      
+  if (!cclass)
+    cclass = colorClasses[Math.floor(Math.random() * colorClasses.length)]; 
+  b.setAttribute("class", cclass);
 
-  if (!color)
-    color = colorClasses[Math.floor(Math.random() * colorClasses.length)];
+  if (!text)
+    text = emojis[Math.floor(Math.random() * emojis.length)];
 
-  b.setAttribute("class", color);
+  b.innerText = text;
+
   return b;
 };
 
@@ -286,5 +293,5 @@ const setLocalStorage = (name, value) => {
 
 const clearLocalStorage = () => {
   localStorage.clear();
-  location.reload()
+  location.reload();
 };

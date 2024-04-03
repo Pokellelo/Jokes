@@ -3,21 +3,49 @@
 
 <body>
     <style>
-      body{
-        text-align: center;
-      }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        body {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+
+            font-family: "Inter", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings: "slnt" 0;
+        }
+
+        .btn-yes{
+            font-size: 50px;
+            padding: 10px 20px;
+            background-color: orangered;
+            color:white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-yes:hover{
+            filter: brightness(130%);
+            box-shadow: 10px 10px 29px -25px rgba(255,69,0,0.75);
+        }
+
+        #favDialog{
+            border: 2px orangered solid;
+            box-shadow: 10px 10px 24px 0px rgba(255,69,0,0.75);
+        }
     </style>
     <!-- Simple pop-up dialog box, containing a form -->
     <dialog id="favDialog">
         <form method="dialog">
             <section>
-                <img
+                <img alt="srhimp-image"
                     src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/99f56b87-b792-4bdb-aa39-afad37493ec4/dgcu32s-e9421a0a-9a20-435d-b5b8-030e4810077b.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzk5ZjU2Yjg3LWI3OTItNGJkYi1hYTM5LWFmYWQzNzQ5M2VjNFwvZGdjdTMycy1lOTQyMWEwYS05YTIwLTQzNWQtYjViOC0wMzBlNDgxMDA3N2IuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.U2i3jGpFjzYCn97AKB4AEtM1W4cyMazEK6XhxxyifQ4">
                 <h3>
                     You a shrimp!!!!!!
                 </h3>
             </section>
-                <button id="cancel" type="reset" style="font-size: 50px; width:100%;">A</button>
+            <button id="cancel" type="reset"  class="btn-yes" style="width:100%;">A</button>
         </form>
     </dialog>
 
@@ -25,8 +53,8 @@
         <h3>
             ¿ Are you a shrimp ?
         </h3>
-        <button id="updateDetails" style="font-size: 50px;">Yes</button>
-        <button id="updateDetails2" style="font-size: 50px;">Yes</button>
+        <button id="updateDetails"  class="btn-yes">Yes</button>
+        <button id="updateDetails2" class="btn-yes">Yes</button>
     </menu>
 
     <script>
@@ -59,11 +87,7 @@
 
 
 
-    <script type="javascript">
-
-
-
-</script>
+    <script type="javascript"></script>
 </body>
 
 </html>
