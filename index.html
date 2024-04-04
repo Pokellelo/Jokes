@@ -21,7 +21,6 @@
             grid-template-columns: 1fr 1fr 1fr;
         }
 
-
         .liga-b {
             text-align: center;
             padding: 2rem 1rem;
@@ -36,11 +35,10 @@
         .liga-b:hover {
             filter: brightness(120%);
             margin: 9px;
-            box-shadow: 0px 28px 57px -36px rgba(0,0,0,0.75);
-
+            box-shadow: 0px 28px 57px -36px rgba(0, 0, 0, 0.75);
         }
 
-        header{
+        header {
             text-align: left;
             font-size: 18px;
             padding: 20px 10px;
@@ -59,22 +57,22 @@
 
     </div>
 
-    <script type="text/javascript">
-        const host = location.host == "" ? "" : location.href.slice(0, -10)
-        let d = document.getElementById("main")
 
-        const ar = [{ name: "Shrimp", ref: "shrimp.html" }, { name: "Just a clicker", ref: "clickme.html" }]
-
-        ar.forEach(e => {
-            let b = document.createElement("a")
-            b.setAttribute("class", "liga-b")
-            b.setAttribute("href", host + e.ref)
-            b.innerText = e.name
-
-            d.appendChild(b);
-        });
-    </script>
 </body>
+<script type="text/javascript">
+    const host = location.host == "" ? "" : location.href.slice(0, -10)
+    let d = document.getElementById("main")
 
+    const ar = [{ name: "Shrimp", ref: "shrimp.html" }, { name: "Just a clicker", ref: "clickme.html" }]
+
+    ar.forEach(e => {
+        let b = document.createElement("a")
+        b.setAttribute("class", "liga-b")
+        b.setAttribute("href", host + e.ref)
+        b.innerText = e.name
+
+        d.appendChild(b);
+    });
+</script>
 
 </html>
