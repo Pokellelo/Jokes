@@ -232,7 +232,7 @@ const createOptions = () => {
 createOptions();
 
 function setMaxandMin() {
-  const a = costHashMap.keys().toArray();
+  const a = [ ...costHashMap.keys()];
   vars.costMin = Math.min(...a);
   vars.costMax = Math.max(...a);
 }
