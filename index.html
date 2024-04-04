@@ -63,7 +63,9 @@
     const host = location.host == "" ? "" : location.href.slice(0, -10)
     let d = document.getElementById("main")
 
-    const ar = [{ name: "Shrimp", ref: "shrimp.html" }, { name: "Just a clicker", ref: "clickme.html" }]
+    const ar = [{ name: "Shrimp", ref: "shrimp.html" }, 
+    { name: "Just a clicker", ref: "clickme.html" },
+    { name: "Chase it", ref: "chaseit.html" }]
 
     ar.forEach(e => {
         let b = document.createElement("a")
