@@ -1,6 +1,8 @@
 document.addEventListener("mousemove", function (e) {
   let ele = document.elementFromPoint(e.pageX, e.pageY);
 
+  if (!ele) return;
+
   if (ele.getAttribute("class") == "chaseable pet") {
     const r_top = Math.floor(Math.random() * innerHeight);
     const r_left = Math.floor(Math.random() * innerWidth);
@@ -10,27 +12,28 @@ document.addEventListener("mousemove", function (e) {
         Math.abs(ele.style.left.slice(0, -2) - r_left) >=
       100
     )
-      //basic time animation
-      ele.style.transition = " all 3s";
-    else ele.style.transition = " all 1s";
+      ele.style.transition = " all 1s"; //basic time animation
+    else ele.style.transition = " all 0.5s";
 
     ele.style.top = r_top + "px";
     ele.style.left = r_left + "px";
   }
 });
 
-const createPet = (pet = "🐄", x = 0, y = 50) => {
+const createPet = (pet = "🐄", x = 50, y = 50) => {
   let s = document.createElement("span");
   s.setAttribute("class", "chaseable pet");
-  s.setAttribute("id", "pet");
 
-  s.style.left = x;
-  s.style.top = y;
+  s.style.left = x + "PX";
+  s.style.top = y + "px";
   s.innerText = pet;
-
   return s;
 };
 
 let d = document.getElementById("canva");
 
 d.appendChild(createPet("🐄"));
+d.appendChild(createPet("🐄", 100, 500));
+d.appendChild(createPet("🦎", 200, 100));
+d.appendChild(createPet("🐏", 300, 150));
+d.appendChild(createPet("🦖", 80, 250));
