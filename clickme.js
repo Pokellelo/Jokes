@@ -131,13 +131,12 @@ function reduceInverval(reduce = 10) {
 
 const createBlock = (cclass = null, text = null) => {
   let b = document.createElement("span");
-      
+
   if (!cclass)
-    cclass = colorClasses[Math.floor(Math.random() * colorClasses.length)]; 
+    cclass = colorClasses[Math.floor(Math.random() * colorClasses.length)];
   b.setAttribute("class", cclass);
 
-  if (!text)
-    text = emojis[Math.floor(Math.random() * emojis.length)];
+  if (!text) text = emojis[Math.floor(Math.random() * emojis.length)];
 
   b.innerText = text;
 
@@ -232,13 +231,33 @@ const createOptions = () => {
 createOptions();
 
 function setMaxandMin() {
-  const a = [ ...costHashMap.keys()];
+  const a = [...costHashMap.keys()];
   vars.costMin = Math.min(...a);
   vars.costMax = Math.max(...a);
 }
 
 // Make the DIV element draggable:
-dragElement(document.getElementById("menu"));
+
+menu = document.getElementById("menu");
+menu.addEventListener("touchmove", function (e) {
+  // grab the location of touch
+  var touchLocation = e.targetTouches[0];
+
+  // assign box new coordinates based on the touch.
+  menu.style.left = touchLocation.pageX + "px";
+  menu.style.top = touchLocation.pageY + "px";
+});
+
+/* record the position of the touch
+when released using touchend event.
+This will be the drop position. */
+
+menu.addEventListener("touchend", function (e) {
+  // current box position.
+  var x = parseInt(menu.style.left);
+  var y = parseInt(menu.style.top);
+});
+dragElement(menu);
 
 function dragElement(elmnt) {
   var pos1 = 0,
