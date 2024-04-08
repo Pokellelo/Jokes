@@ -3,8 +3,6 @@
 
 <head>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-
         body {
             padding: 0;
             margin: 0;
@@ -13,19 +11,33 @@
             font-optical-sizing: auto;
             font-style: normal;
             font-variation-settings: "slnt" 0;
+
+            color: white;
+            mix-blend-mode: difference;
+            /* Other CSS properties */
         }
 
         #main {
+            width: 100%;
             display: grid;
+            margin-top: 5px;
+            grid-template-columns: repeat(auto-fill, minmax(33%, 1fr));
             grid-auto-rows: 1fr;
-            grid-template-columns: 1fr 1fr 1fr;
+            grid-auto-flow: row dense;
+            grid-gap: 5px;
+            counter-reset: boxes;
+        }
+
+        @media only screen and (max-width: 450px) {
+            #main {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
         }
 
         .liga-b {
             text-align: center;
             padding: 2rem 1rem;
             display: block;
-            margin: 10px;
             color: white;
             background-color: #762af0;
             text-decoration: none;
@@ -34,7 +46,6 @@
 
         .liga-b:hover {
             filter: brightness(120%);
-            margin: 9px;
             box-shadow: 0px 28px 57px -36px rgba(0, 0, 0, 0.75);
         }
 
@@ -45,6 +56,8 @@
             background-color: #2A6FF0;
             color: white;
         }
+
+        
     </style>
 </head>
 
@@ -63,7 +76,7 @@
     const host = location.host == "" ? "" : location.href.slice(0, -10)
     let d = document.getElementById("main")
 
-    const ar = [{ name: "Shrimp", ref: "shrimp.html" }, 
+    const ar = [{ name: "Shrimp", ref: "shrimp.html" },
     { name: "Just a clicker", ref: "clickme.html" },
     { name: "Capture them", ref: "capturethem.html" }]
 
@@ -75,6 +88,15 @@
 
         d.appendChild(b);
     });
+
+    
+    let b  = document.body
+    window.addEventListener("scroll", () =>{
+
+        console.log("hola")
+    });
+
+
 </script>
 
 </html>
