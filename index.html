@@ -6,22 +6,21 @@
         body {
             padding: 0;
             margin: 0;
+            color: #762af0;
 
             font-family: "Inter", sans-serif;
             font-optical-sizing: auto;
             font-style: normal;
             font-variation-settings: "slnt" 0;
 
-            color: white;
             mix-blend-mode: difference;
-            /* Other CSS properties */
         }
 
         #main {
             width: 100%;
             display: grid;
             margin-top: 5px;
-            grid-template-columns: repeat(auto-fill, minmax(33%, 1fr));
+            grid-template-columns: 1fr;
             grid-auto-rows: 1fr;
             grid-auto-flow: row dense;
             grid-gap: 5px;
@@ -38,10 +37,12 @@
             text-align: center;
             padding: 2rem 1rem;
             display: block;
-            color: white;
-            background-color: #762af0;
+
             text-decoration: none;
             font-size: 20px;
+            margin: 50px 50px;
+            background: linear-gradient(90deg, #6200ff, #9350ff);
+            color: white;
         }
 
         .liga-b:hover {
@@ -53,11 +54,14 @@
             text-align: left;
             font-size: 18px;
             padding: 20px 10px;
-            background-color: #2A6FF0;
-            color: white;
+            border: 1px black solid;
         }
 
-        
+        .subtext {
+            font-size: 14px;
+            text-align: left;
+            padding: 0px 50px;
+        }
     </style>
 </head>
 
@@ -76,22 +80,22 @@
     const host = location.host == "" ? "" : location.href.slice(0, -10)
     let d = document.getElementById("main")
 
-    const ar = [{ name: "Shrimp", ref: "shrimp.html" },
-    { name: "Just a clicker", ref: "clickme.html" },
-    { name: "Capture them", ref: "capturethem.html" }]
+    const ar = [{ name: "Shrimp", ref: "shrimp.html", text: "¿ Are you a shrimp ?" },
+    { name: "Just a clicker", ref: "clickme.html", text: "Simplistic exponential clicker" },
+    { name: "Capture them", ref: "capturethem.html", text: "Minigame to capture pets" }]
 
     ar.forEach(e => {
         let b = document.createElement("a")
         b.setAttribute("class", "liga-b")
         b.setAttribute("href", host + e.ref)
-        b.innerText = e.name
+        b.innerHTML = e.name + "<br><p class='subtext'>" + e.text + "</p>"
 
         d.appendChild(b);
     });
 
-    
-    let b  = document.body
-    window.addEventListener("scroll", () =>{
+
+    let b = document.body
+    window.addEventListener("scroll", () => {
 
         console.log("hola")
     });
