@@ -1,43 +1,53 @@
-document.addEventListener("mousemove", function (e) {
-  let ele = document.elementFromPoint(e.pageX, e.pageY);
+let d = document.getElementById("canva");
 
-  if (!ele) return;
+function spawn() {
+  let pets = document.getElementsByClassName("chaseable pet");
 
-  if (ele.getAttribute("class") == "chaseable pet") {
-    const r_top = Math.floor(Math.random() * innerHeight);
-    const r_left = Math.floor(Math.random() * innerWidth);
+  let foods = document.getElementsByClassName("chaseable pet");
 
-    if (
-      Math.abs(ele.style.top.slice(0, -2) - r_top) +
-        Math.abs(ele.style.left.slice(0, -2) - r_left) >=
-      100
-    )
-      ele.style.transition = " all 1s"; //basic time animation
-    else ele.style.transition = " all 0.5s";
+  for (let i = 0; i < pets.length; i++) {
+    let ele = pets[i];
+
+    let r_top = Math.floor(Math.random() * innerHeight);
+    let r_left = Math.floor(Math.random() * innerWidth);
 
     ele.style.top = r_top + "px";
     ele.style.left = r_left + "px";
-  }
-});
 
-const createPet = (pet = "🐄", x = 50, y = 50) => {
+    let checkFood = document.elementFromPoint(r_top, r_left);
+
+    if (checkFood && checkFood.className == "food") {
+      checkFood.remove();
+    }
+  }
+}
+
+let interval = setInterval(spawn, 3000);
+
+window.onclick = function (e) {
+  d.appendChild(createElement("🍡", e.x, e.y, "food"));
+};
+
+const createElement = (
+  inner = "🐄",
+  x = 50,
+  y = 50,
+  classes = "chaseable pet"
+) => {
   let s = document.createElement("span");
-  s.setAttribute("class", "chaseable pet");
+  s.setAttribute("class", classes);
 
   s.style.left = x + "PX";
   s.style.top = y + "px";
-  s.innerText = pet;
+  s.innerText = inner;
   return s;
 };
 
-let d = document.getElementById("canva");
-
-
-["🐄", "🐄", "🦎", "🐏", "🦖"].forEach(e => {
+["🐄", "🐄", "🦎", "🐏", "🦖"].forEach((e) => {
   const r_top = Math.floor(Math.random() * innerHeight);
-    const r_left = Math.floor(Math.random() * innerWidth);
+  const r_left = Math.floor(Math.random() * innerWidth);
 
-    d.appendChild(createPet(e, r_top, r_left));
+  d.appendChild(createElement(e, r_top, r_left));
 });
 
 net = document.getElementById("net");
@@ -46,8 +56,6 @@ net.addEventListener("touchmove", function (e) {
   net.style.left = touchLocation.pageX + "px";
   net.style.top = touchLocation.pageY + "px";
 });
-
-
 
 net.addEventListener("touchend", function (e) {
   var x = parseInt(net.style.left);
