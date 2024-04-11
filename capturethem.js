@@ -32,11 +32,13 @@ const createPet = (pet = "🐄", x = 50, y = 50) => {
 
 let d = document.getElementById("canva");
 
-d.appendChild(createPet("🐄"));
-d.appendChild(createPet("🐄", 100, 500));
-d.appendChild(createPet("🦎", 200, 100));
-d.appendChild(createPet("🐏", 300, 150));
-d.appendChild(createPet("🦖", 80, 250));
+
+["🐄", "🐄", "🦎", "🐏", "🦖"].forEach(e => {
+  const r_top = Math.floor(Math.random() * innerHeight);
+    const r_left = Math.floor(Math.random() * innerWidth);
+
+    d.appendChild(createPet(e, r_top, r_left));
+});
 
 net = document.getElementById("net");
 net.addEventListener("touchmove", function (e) {
