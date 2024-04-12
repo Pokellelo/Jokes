@@ -12,6 +12,18 @@
             font-optical-sizing: auto;
             font-style: normal;
             font-variation-settings: "slnt" 0;
+            background: linear-gradient(30deg, #6200ff, #f8420b);
+            height: 100vh;
+        }
+
+        header * {
+            margin: 10px 0px;
+        }
+
+        header {
+            text-align: left;
+            font-size: 19px;
+            padding: 10px 20px;
         }
 
         #main {
@@ -44,17 +56,6 @@
         .liga-b:hover {
             filter: brightness(120%);
             transform: scale(1.05);
-        }
-
-        header {
-            text-align: left;
-            font-size: 19px;
-            padding: 10px 20px;
-            background: linear-gradient(200deg, #6200ff, #f8420b);
-        }
-
-        header * {
-            margin: 10px 0px;
         }
 
         .subtext {
@@ -97,12 +98,16 @@
 
 
     let b = document.body
-    window.addEventListener("scroll", () => {
+    let deg = 30
+    /*window.addEventListener("scroll", () => {
+        
+    });*/
 
-        console.log("hola")
-    });
-
-
+    window.addEventListener("wheel", event => {
+        
+        deg += event.deltaY == 100 ? 5 : - 5
+        b.style.background = "linear-gradient(" + deg + "deg, #6200ff, #f8420b)"
+});
 </script>
 
 </html>
