@@ -134,7 +134,7 @@ const createBlock = (cclass = null, text = null) => {
 
   if (!cclass)
     cclass = colorClasses[Math.floor(Math.random() * colorClasses.length)];
-  b.setAttribute("class", cclass);
+  //b.setAttribute("class", cclass);
 
   if (!text) text = emojis[Math.floor(Math.random() * emojis.length)];
 
