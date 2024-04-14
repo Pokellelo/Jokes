@@ -1,0 +1,57 @@
+body {
+  padding: 0px;
+  margin: 0px;
+  overscroll-behavior: contain;
+  padding-top: 70px;
+  background: linear-gradient(30deg, #65915f, #2f9e41);
+  min-height: 100vh;
+  color:white;
+}
+
+#toolbar{
+  width: 100%;
+  padding: 10px;
+  position: fixed;
+  top: 0px;
+  min-height: 30px;
+  background-color: rgb(92, 57, 216);
+  text-align: center;
+}
+
+#toolbar div{
+  display: inline-block;
+  padding: 10px; 
+  margin: 10px;
+}
+.pet {
+  cursor: pointer;
+  user-select: none;
+  transition: all 2s;
+}
+
+.food {
+  display: block;
+  position: absolute;
+  user-select: none;
+
+  z-index: 4;
+  font-size: 20px;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+
+.chaseable {
+  display: block;
+  position: absolute;
+  z-index: 5;
+  font-size: 35px;
+  padding: 30px;
+
+}
+
+#net {
+  display: block;
+  position: absolute;
+  cursor: grab;
+  font-size: 50px;
+}

@@ -22,7 +22,7 @@ function spawn() {
   }
 }
 
-let interval = setInterval(spawn, 3000);
+let interval = setInterval(spawn, 1000);
 
 window.onclick = function (e) {
   d.appendChild(createElement("🍡", e.x, e.y, "food"));
@@ -50,18 +50,6 @@ const createElement = (
   d.appendChild(createElement(e, r_top, r_left));
 });
 
-net = document.getElementById("net");
-net.addEventListener("touchmove", function (e) {
-  var touchLocation = e.targetTouches[0];
-  net.style.left = touchLocation.pageX + "px";
-  net.style.top = touchLocation.pageY + "px";
-});
-
-net.addEventListener("touchend", function (e) {
-  var x = parseInt(net.style.left);
-  var y = parseInt(net.style.top);
-});
-dragElement(net);
 
 function dragElement(elmnt) {
   var pos1 = 0,
