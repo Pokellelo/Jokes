@@ -71,7 +71,7 @@
 
     <header>
         <h3>Pokellelo</h3>
-        <p>Just my "one-filers" to have fun</p>
+        <p>Just my "one-filers" to have fun and to be helpful</p>
     </header>
     <div id="main">
 
@@ -85,7 +85,9 @@
 
     const ar = [{ name: "Shrimp", ref: "shrimp.html", text: "¿Are you a shrimp?" },
     { name: "Just a clicker", ref: "clickme.html", text: "Simplistic exponential clicker" },
-    { name: "Capture them", ref: "capturethem.html", text: "Minigame to capture pets" }]
+    { name: "Capture them", ref: "capturethem.html", text: "Minigame to capture pets" },
+    { name: "Lost characters", ref: "characters.html", text: "Those special characters you don't know how to input" }
+    ]
 
     ar.forEach(e => {
         let b = document.createElement("a")
@@ -104,10 +106,10 @@
     });*/
 
     window.addEventListener("wheel", event => {
-        
+
         deg += event.deltaY == 100 ? 5 : - 5
         b.style.background = "linear-gradient(" + deg + "deg, #6200ff, #f8420b)"
-});
+    });
 </script>
 
 </html>
