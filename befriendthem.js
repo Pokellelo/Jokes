@@ -1,3 +1,7 @@
+let data = {
+  selected_food: "🍡",
+};
+
 let d = document.getElementById("canva");
 
 function spawn() {
@@ -24,8 +28,13 @@ function spawn() {
 
 let interval = setInterval(spawn, 1000);
 
+
+const set_food = (food) => {
+  data.selected_food = food
+}
+
 window.onclick = function (e) {
-  d.appendChild(createElement("🍡", e.x, e.y, "food"));
+  d.appendChild(createElement(data.selected_food, e.x, e.y, "food"));
 };
 
 const createElement = (
@@ -49,7 +58,6 @@ const createElement = (
 
   d.appendChild(createElement(e, r_top, r_left));
 });
-
 
 function dragElement(elmnt) {
   var pos1 = 0,
