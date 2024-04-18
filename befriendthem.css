@@ -18,7 +18,7 @@ body {
   text-align: center;
 }
 
-#toolbar div{
+#toolbar button{
   display: inline-block;
   padding: 10px; 
   margin: 10px;
@@ -58,9 +58,6 @@ body {
 
 }
 
-#net {
-  display: block;
-  position: absolute;
-  cursor: grab;
-  font-size: 50px;
+.menu-tab{
+  display: none;
 }

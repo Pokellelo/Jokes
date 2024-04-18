@@ -9,33 +9,33 @@
 
 <body>
     <div id="toolbar">
-        <div>◀️</div>
-        <span id ="foods">
-            <div onclick="set_food('🍇')">🍇</div>
+        <button onclick="changeMenu(-1)">◀️</button>
+        <span id ="foods" class="menu-tab">
+            <button onclick="set_food('🍇')">🍇</button>
 
-            <div onclick="set_food('🥝')">🥝</div>
+            <button onclick="set_food('🥝')">🥝</button>
 
-            <div onclick="set_food('🌶️')">🌶️</div>
+            <button onclick="set_food('🌶️')">🌶️</button>
 
-            <div onclick="set_food('🍡')">🍡</div>
+            <button onclick="set_food('🍡')">🍡</button>
         </span>
-        <span id ="pets">
-            <div>🦖</div>
+        <span id ="pets" class="menu-tab">
+            <button>🦖</button>
 
-            <div>🐏</div>
+            <button>🐏</button>
 
-            <div>🐄</div>
+            <button>🐄</button>
 
-            <div>🦎</div>
+            <button>🦎</button>
         </span>
-        <div>▶️</div>
+        <button onclick="changeMenu(1)">▶️</button>
     </div>
 
 
 
 
 
-    <div id="canva">
+    <div id="canva" onclick="donclick(this)">
 
 
     </div>
