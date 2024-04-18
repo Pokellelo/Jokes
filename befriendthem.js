@@ -1,7 +1,36 @@
 let data = {
   selected_food: "🍡",
   selected_menu_index: 0,
+  map: new Map(), //nested HashMap x, y
+  elements_cuantity: 0,
+  setMapElement(x, y, id) {
+    let new_y_hash = new Map();
+    let elements = [];
+
+    const x_hash = this.map.get(x);
+    if (x_hash) {
+      new_y_hash = x_hash;
+
+      let y = new_y_hash.get(y);
+      if (y) elements = y;
+    }
+    elements.push(id);
+
+    new_y_hash.set(y, elements);
+    this.map.set(x, new_y_hash);
+    this.elements_cuantity++;
+  },
+  getMapElements(x, y) {
+    const x_hash = this.map.get(x);
+    if (!x_hash) return undefined;
+
+    const y_array = x_hash.get(y);
+
+    return y_array;
+  },
 };
+
+const movingAlgorith = (element) => {};
 
 let menu_tab = document.getElementsByClassName("menu-tab");
 
@@ -40,10 +69,9 @@ const changeMenu = (ind) => {
   let pointer = data.selected_menu_index + ind;
 
   //Circulate menu
-  if (pointer > menu_size || pointer < 0)
-    pointer = pointer < 0 ? menu_size : 0;
+  if (pointer > menu_size || pointer < 0) pointer = pointer < 0 ? menu_size : 0;
 
-    console.log(pointer)
+  console.log(pointer);
   for (let i = 0; i <= menu_size; i++) {
     menu_tab[i].className = pointer == i ? "menu-tab" : "menu-tab hidden";
   }
@@ -67,6 +95,9 @@ const createElement = (
   s.style.left = x + "PX";
   s.style.top = y + "px";
   s.innerText = inner;
+
+  data.setMapElement(x, y, "🐄" + x + "," + y);
+
   return s;
 };
 
