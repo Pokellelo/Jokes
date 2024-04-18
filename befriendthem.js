@@ -1,6 +1,9 @@
 let data = {
   selected_food: "🍡",
+  selected_menu_index: 0,
 };
+
+let menu_tab = document.getElementsByClassName("menu-tab");
 
 let d = document.getElementById("canva");
 
@@ -28,10 +31,25 @@ function spawn() {
 
 let interval = setInterval(spawn, 1000);
 
-
 const set_food = (food) => {
-  data.selected_food = food
-}
+  data.selected_food = food;
+};
+
+const changeMenu = (ind) => {
+  const menu_size = menu_tab.length - 1;
+  let pointer = data.selected_menu_index + ind;
+
+  //Circulate menu
+  if (pointer > menu_size || pointer < 0)
+    pointer = pointer < 0 ? menu_size : 0;
+
+    console.log(pointer)
+  for (let i = 0; i <= menu_size; i++) {
+    menu_tab[i].className = pointer == i ? "menu-tab" : "menu-tab hidden";
+  }
+
+  data.selected_menu_index = pointer;
+};
 
 window.onclick = function (e) {
   d.appendChild(createElement(data.selected_food, e.x, e.y, "food"));
