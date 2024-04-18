@@ -11,7 +11,7 @@ let data = {
     if (x_hash) {
       new_y_hash = x_hash;
 
-      let y = new_y_hash.get(y);
+      y = new_y_hash.get(y);
       if (y) elements = y;
     }
     elements.push(id);
@@ -62,6 +62,16 @@ let interval = setInterval(spawn, 1000);
 
 const set_food = (food) => {
   data.selected_food = food;
+
+  const size = menu_tab[0].children.length;
+  for (let i = 0; i < size; i++) {
+    console.log(menu_tab[0].children[i].innerText);
+    if (menu_tab[0].children[i].innerText == food) {
+      menu_tab[0].children[i].className = "selected_food";
+    } else {
+      menu_tab[0].children[i].className = "";
+    }
+  }
 };
 
 const changeMenu = (ind) => {
@@ -96,7 +106,8 @@ const createElement = (
   s.style.top = y + "px";
   s.innerText = inner;
 
-  data.setMapElement(x, y, "🐄" + x + "," + y);
+  data.setMapElement(x, y, inner + x + "," + y);
+  
 
   return s;
 };
