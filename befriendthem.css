@@ -6,6 +6,7 @@ body {
   background: linear-gradient(30deg, #65915f, #2f9e41);
   color:white;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 #canva{
@@ -51,9 +52,10 @@ body {
   position: absolute;
   user-select: none;
 
+  padding:50px;
   z-index: 4;
   font-size: 20px;
-  transition: visibility 0s 2s, opacity 2s linear;
+
 }
 
 

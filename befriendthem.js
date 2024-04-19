@@ -30,6 +30,7 @@ let data = {
   },
 };
 
+const ms = 1000;
 const movingAlgorith = (element) => {};
 
 let menu_tab = document.getElementsByClassName("menu-tab");
@@ -53,12 +54,20 @@ function spawn() {
     let checkFood = document.elementFromPoint(r_top, r_left);
 
     if (checkFood && checkFood.className == "food") {
-      checkFood.remove();
+      checkFood.style.transition = "opacity " + ms + "ms linear";
+
+      setTimeout(function () {
+        checkFood.style.opacity = 0;
+
+        setTimeout(function () {
+          checkFood.remove();
+        }, ms);
+      }, 1000);
     }
   }
 }
 
-let interval = setInterval(spawn, 1000);
+let interval = setInterval(spawn, 4000);
 
 const set_food = (food) => {
   data.selected_food = food;
@@ -90,7 +99,7 @@ const changeMenu = (ind) => {
 };
 
 window.onclick = function (e) {
-  d.appendChild(createElement(data.selected_food, e.x, e.y, "food"));
+  d.appendChild(createElement(data.selected_food, e.x - 50, e.y - 50, "food"));
 };
 
 const createElement = (
@@ -107,7 +116,6 @@ const createElement = (
   s.innerText = inner;
 
   data.setMapElement(x, y, inner + x + "," + y);
-  
 
   return s;
 };
@@ -118,38 +126,3 @@ const createElement = (
 
   d.appendChild(createElement(e, r_top, r_left));
 });
-
-function dragElement(elmnt) {
-  var pos1 = 0,
-    pos2 = 0,
-    pos3 = 0,
-    pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    elmnt.onmousedown = dragMouseDown;
-  }
-
-  function dragMouseDown(e) {
-    e.preventDefault();
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e.preventDefault();
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    elmnt.style.top = elmnt.offsetTop - pos2 + "px";
-    elmnt.style.left = elmnt.offsetLeft - pos1 + "px";
-  }
-
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
-}
