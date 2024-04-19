@@ -4,8 +4,12 @@ body {
   overscroll-behavior: contain;
   padding-top: 70px;
   background: linear-gradient(30deg, #65915f, #2f9e41);
-  min-height: 100vh;
   color:white;
+  min-height: 100vh;
+}
+
+#canva{
+
 }
 
 #toolbar{
