@@ -5,11 +5,11 @@ body {
   padding-top: 70px;
   background: linear-gradient(30deg, #65915f, #2f9e41);
   color:white;
-  min-height: 100vh;
   overflow: hidden;
 }
 
 #canva{
+  min-height: 100vh;
 
 }
 

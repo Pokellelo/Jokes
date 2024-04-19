@@ -45,8 +45,8 @@ function spawn() {
   for (let i = 0; i < pets.length; i++) {
     let ele = pets[i];
 
-    let r_top = Math.floor(Math.random() * innerHeight);
-    let r_left = Math.floor(Math.random() * innerWidth);
+    let r_top = Math.floor(Math.random() * (innerHeight - 80) + 80);
+    let r_left = Math.floor(Math.random() * (innerWidth - 80) + 80);
 
     ele.style.top = r_top + "px";
     ele.style.left = r_left + "px";
@@ -60,6 +60,8 @@ function spawn() {
         checkFood.style.opacity = 0;
 
         setTimeout(function () {
+          ele.style.fontSize = (parseInt(ele.style.fontSize.slice(0, -2)) + 4) + "px";
+
           checkFood.remove();
         }, ms);
       }, 1000);
@@ -74,7 +76,6 @@ const set_food = (food) => {
 
   const size = menu_tab[0].children.length;
   for (let i = 0; i < size; i++) {
-    console.log(menu_tab[0].children[i].innerText);
     if (menu_tab[0].children[i].innerText == food) {
       menu_tab[0].children[i].className = "selected_food";
     } else {
@@ -90,7 +91,6 @@ const changeMenu = (ind) => {
   //Circulate menu
   if (pointer > menu_size || pointer < 0) pointer = pointer < 0 ? menu_size : 0;
 
-  console.log(pointer);
   for (let i = 0; i <= menu_size; i++) {
     menu_tab[i].className = pointer == i ? "menu-tab" : "menu-tab hidden";
   }
@@ -98,9 +98,11 @@ const changeMenu = (ind) => {
   data.selected_menu_index = pointer;
 };
 
-window.onclick = function (e) {
-  d.appendChild(createElement(data.selected_food, e.x - 50, e.y - 50, "food"));
-};
+document.getElementById("canva").addEventListener("click", (e) => {
+  d.appendChild(
+    createElement(data.selected_food, e.pageX - 50, e.pageY - 50, "food")
+  );
+});
 
 const createElement = (
   inner = "🐄",
@@ -113,6 +115,7 @@ const createElement = (
 
   s.style.left = x + "PX";
   s.style.top = y + "px";
+  s.style.fontSize = Math.floor(Math.random() * (35 - 20) + 20) + "px";
   s.innerText = inner;
 
   data.setMapElement(x, y, inner + x + "," + y);
