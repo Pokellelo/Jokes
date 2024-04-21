@@ -54,11 +54,11 @@ function spawn() {
     let checkFood = document.elementFromPoint(r_top, r_left);
 
     if (checkFood && checkFood.className == "food") {
-      checkFood.style.transition = "opacity " + ms + "ms linear";
-
+      
+      checkFood.style.transition = "all " + ms + "ms linear";
+      checkFood.style.fontSize = "5px"
       setTimeout(function () {
         checkFood.style.opacity = 0;
-
         setTimeout(function () {
           ele.style.fontSize = (parseInt(ele.style.fontSize.slice(0, -2)) + 4) + "px";
 
