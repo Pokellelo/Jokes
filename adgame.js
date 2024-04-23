@@ -1,6 +1,7 @@
 let data = {
   positionX: 50,
   positionY: 50,
+  facing: 0,
   level: 1,
   size: 20,
   movement: 10,
@@ -22,13 +23,21 @@ const movement = (e) => {
   let key = e.code.slice(3).toLowerCase();
   let pos = 0;
   switch (key) {
-    case "s":
     case "d":
       pos += data.movement;
+      data.facing = -90;
+      break;
+    case "s":
+      pos += data.movement;
+      data.facing = 0;
       break;
 
     case "a":
+      data.facing = 90;
+      pos -= data.movement;
+      break;
     case "w":
+      data.facing = 180;
       pos -= data.movement;
       break;
 
@@ -42,6 +51,8 @@ const movement = (e) => {
 
     data[dir] += pos;
     pj.style[direction] = data[dir] + "px";
+
+    pj.style.transform = "rotate(" + data.facing + "deg)";
   }
 };
 const setLevel = (level, increment = true) => {
@@ -59,7 +70,7 @@ function init() {
   pj.className = data.classData.class_name();
   b.append(pj);
   pj = this.pj;
-  setLevel(data.level, false)
+  setLevel(data.level, false);
   b.addEventListener("keydown", movement);
 }
 
