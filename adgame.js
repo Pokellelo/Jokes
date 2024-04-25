@@ -25,7 +25,7 @@ const movement = (e) => {
   switch (key) {
     case "d":
       pos += data.movement;
-      data.facing  = data.facing == 180 ? 270 : -90;
+      data.facing = data.facing == 180 ? 270 : -90;
       break;
     case "s":
       pos += data.movement;
@@ -75,3 +75,15 @@ function init() {
 }
 
 init();
+
+const createElement = () => {
+  let e = document.createElement("span");
+
+  e.style.top = data.positionY + "px";
+  e.style.left = data.positionX + "px";
+  e.style.fontSize = data.size + "px";
+  e.style.position = "absolute";
+  e.innerText = "1";
+  b.append(e);
+};
+createElement();
