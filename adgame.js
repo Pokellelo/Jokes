@@ -25,7 +25,7 @@ const movement = (e) => {
   switch (key) {
     case "d":
       pos += data.movement;
-      data.facing = -90;
+      data.facing  = data.facing == 180 ? 270 : -90;
       break;
     case "s":
       pos += data.movement;
