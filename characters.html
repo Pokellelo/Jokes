@@ -47,9 +47,16 @@
 <script type="text/javascript">
     let d = document.getElementById("main")
 
-    const ar = [{ item: "&bsol;", description: "înverted slash" },
-    { item: "~", description: "curve script" }, { item: "@", description: "aroba" },
-    ]
+    const ar = []
+    const poblate_ar = (item, description) => {
+        ar.push({item:item, description:description})
+    }
+
+    poblate_ar("&bsol;", "înverted slash")
+    poblate_ar("~;", "Curve script")
+    poblate_ar("@;", "Arroba")
+    poblate_ar("`", "înverted accent")
+
 
     ar.forEach(e => {
         let b = document.createElement("button")
